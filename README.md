@@ -66,3 +66,9 @@ Please do __NOT__ include any of the project data sets provided in the `dogImage
 ### Ready to submit your project?
 
 Click on the "Submit Project" button in the classroom and follow the instructions to submit!
+
+### Above is the information downloaded from Udacity Deep learning Nanodegree
+
+The files in this repository are modified and adapted from the Udacity DL Nanodegree, Project 2 Dog Classification. The Jupyter Notebook file included the essential data to build an APP able to distinguish human and dog faces. The APP can also classify the dog breed with the from scratch model or the transfer model. You can select the more suitable model based on different criterion. 
+
+The html file includes the result of tested images.
