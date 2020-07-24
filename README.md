@@ -1,74 +1,54 @@
-[//]: # (Image References)
-
-[image1]: ./images/sample_dog_output.png "Sample Output"
-[image2]: ./images/vgg16_model.png "VGG-16 Model Layers"
-[image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
-
+# Udacity's Data Scientist Nanodegree Capstone Project & Deep Learning Nanodegree Project: Dog Breed Classifier
 
 ## Project Overview
 
-Welcome to the Convolutional Neural Networks (CNN) project in the AI Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images.  Given an image of a dog, your algorithm will identify an estimate of the canine’s breed.  If supplied an image of a human, the code will identify the resembling dog breed.  
+This project is a real-world application of the Convolutional Neural Networks (CNNs) of Deep Learning (DL) field. The aim of the project is build a model to classify the image data. Given an image, the model is able to distinguish whether being a dog image, and to identify the breed of the dog if it is the case. In addition to build a model from scratch, the project also uses the Transfer Learning technique so that the model pre-trained could be reused across different tasks, saving the resource of calculation while still achieving a reasonable accuracy. 
 
-![Sample Output][image1]
+## Dependencies 
 
-Along with exploring state-of-the-art CNN models for classification and localization, you will make important design decisions about the user experience for your app.  Our goal is that by completing this lab, you understand the challenges involved in piecing together a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  Your imperfect solution will nonetheless create a fun user experience!
+Keras
+OpenCV
+Matplotlib
+Numpy
+tqdm
+torch
+PIL
+os
 
+A more detailed description of the libraries and dependencies is available in requirement.txt
 
-## Project Instructions
+## File Descriptions 
 
-### Instructions
+dog_app_finished.ipynb: A Jupyter Notebook file describing the product notebook of the training and validation process
+dog_app_original.ipynb: A Jupyter Notebook file containing the raw source code from the Udacity Project
+report.html: An example file of the final output
+requirement.txt: File describing the environment and the essential libraries
+images\*: A folder containing a few important images for testing the model
+saved_models\model_scratch.pt: A model built from scratch for the project
+saved_models\model_transfer.pt: A resnet50 model trained for the dog breed classification 
 
-1. Clone the repository and navigate to the downloaded folder.
-	
-	```	
-		git clone https://github.com/udacity/deep-learning-v2-pytorch.git
-		cd deep-learning-v2-pytorch/project-dog-classification
-	```
-	
-__NOTE:__ if you are using the Udacity workspace, you *DO NOT* need to re-download the datasets in steps 2 and 3 - they can be found in the `/data` folder as noted within the workspace Jupyter notebook.
+## How to Use
 
-2. Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the repo, at location `path/to/dog-project/dogImages`.  The `dogImages/` folder should contain 133 folders, each corresponding to a different dog breed.
-3. Download the [human dataset](http://vis-www.cs.umass.edu/lfw/lfw.tgz).  Unzip the folder and place it in the repo, at location `path/to/dog-project/lfw`.  If you are using a Windows machine, you are encouraged to use [7zip](http://www.7-zip.org/) to extract the folder. 
-4. Make sure you have already installed the necessary Python packages according to the README in the program repository.
-5. Open a terminal window and navigate to the project folder. Open the notebook and follow the instructions.
-	
-	```
-		jupyter notebook dog_app.ipynb
-	```
+It is recommended to follow the instruction of the Jupyter Notebook to train and test your model. 
 
-__NOTE:__ While some code has already been implemented to get you started, you will need to implement additional functionality to successfully answer all of the questions included in the notebook. __Unless requested, do not modify code that has already been included.__
+The steps could roughly be summarized as the following:
 
-__NOTE:__ In the notebook, you will need to train CNNs in PyTorch.  If your CNN is taking too long to train, feel free to pursue one of the options under the section __Accelerating the Training Process__ below.
+0. Import Datasets
+1. Detect Humans
+2. Detect Dogs
+3. Create a CNN to Classify Dog Breeds (from Scratch)
+4. Create a CNN to Classify Dog Breeds (using Transfer Learning)
+5. Write your Algorithm
+6. Test Your Algorithm
 
+You can also use the pt models as a starting point to work on your own task specific project. 
 
+## To be improved 
 
-## (Optionally) Accelerating the Training Process 
+* The accuracy of the model could be improved with trying to optimize the hyperparameters and the grid search strategies.
 
-If your code is taking too long to run, you will need to either reduce the complexity of your chosen CNN architecture or switch to running your code on a GPU.  If you'd like to use a GPU, you can spin up an instance of your own:
+* The images for training are downloaded from the internet (links are available in the Notebook file). However, the model might potentially be improved with more images with a wider range of dog breeds and more images related to each category. 
 
-#### Amazon Web Services
+* Another solution to improve the performance is to add random noise or rotate the images, so that the model might improve without needing more labeled images.  
 
-You can use Amazon Web Services to launch an EC2 GPU instance. (This costs money, but enrolled students should see a coupon code in their student `resources`.)
-
-## Evaluation
-
-Your project will be reviewed by a Udacity reviewer against the CNN project rubric.  Review this rubric thoroughly and self-evaluate your project before submission.  All criteria found in the rubric must meet specifications for you to pass.
-
-
-## Project Submission
-
-Your submission should consist of the github link to your repository.  Your repository should contain:
-- The `dog_app.ipynb` file with fully functional code, all code cells executed and displaying output, and all questions answered.
-- An HTML or PDF export of the project notebook with the name `report.html` or `report.pdf`.
-
-Please do __NOT__ include any of the project data sets provided in the `dogImages/` or `lfw/` folders.
-
-### Ready to submit your project?
-
-Click on the "Submit Project" button in the classroom and follow the instructions to submit!
-
-### Above is the information downloaded from Udacity Deep learning Nanodegree
-
-The files in this repository are modified and adapted from the Udacity DL Nanodegree, Project 2 Dog Classification. The Jupyter Notebook file included the essential data to build an APP able to distinguish human and dog faces. The APP can also classify the dog breed with the from scratch model or the transfer model. You can select the more suitable model based on different criterion. 
-
-The html file includes the result of tested images.
+* It is currently hard for the model to distinguish between dogs with similar colors but different sizes. An alternative might be helpful if it could pick up more subtle differences. 
